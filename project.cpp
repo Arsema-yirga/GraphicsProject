@@ -153,3 +153,39 @@ void drawBorder() {
     }
     glEnd();
 }
+
+void drawChromeCircle(float cx, float cy, float r, float red, float green, float blue) {
+    glColor3f(red, green, blue);
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(cx, cy);
+    for (int i = 0; i <= 360; i++) {
+        float angle = i * PI / 180.0f;
+        glVertex2f(cx + cos(angle) * r, cy + sin(angle) * r);
+    }
+    glEnd();
+}
+
+void drawChromePart(float startAngle, float endAngle, float red, float green, float blue) {
+    glColor3f(red, green, blue);
+    glBegin(GL_TRIANGLE_STRIP);
+    for (float angle = startAngle; angle <= endAngle; angle += 1.0f) {
+        float rad = angle * PI / 180.0f;
+        float outerX = cos(rad) * 0.55f;
+        float outerY = sin(rad) * 0.55f;
+        float innerX = cos(rad) * 0.20f + cos(rad + 1.2f) * 0.12f;
+        float innerY = sin(rad) * 0.20f + sin(rad + 1.2f) * 0.12f;
+        glVertex2f(outerX, outerY);
+        glVertex2f(innerX, innerY);
+    }
+    glEnd();
+}
+
+void drawChromeLogo() {
+
+    drawChromeCircle(0.0f, 0.0f, 0.35f, 1.0f, 1.0f, 1.0f);
+    drawChromePart(0, 120, 0.86f, 0.13f, 0.13f);
+    drawChromePart(120, 240, 0.11f, 0.66f, 0.29f);
+    drawChromePart(240, 360, 0.98f, 0.77f, 0.04f);
+    drawChromeCircle(0.0f, 0.0f, 0.19f, 1.0f, 1.0f, 1.0f);
+    drawChromeCircle(0.0f, 0.0f, 0.22f, 0.20f, 0.43f, 0.86f);
+}
