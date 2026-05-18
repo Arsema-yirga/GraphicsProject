@@ -125,3 +125,31 @@ void drawStar() {
 
     glEnd();
 }
+void drawFlagPole() {
+    glColor3f(0.85f, 0.85f, 0.85f);
+    glLineWidth(8);
+    glBegin(GL_LINES);
+    glVertex2f(30,60);
+    glVertex2f(30, 600);
+    glEnd();
+    glPointSize(10);
+    glBegin(GL_POINTS);
+    glVertex2f(30,610);
+    glEnd();
+}
+void drawBorder() {
+    glColor3f(0, 0, 0);
+    glLineWidth(1);
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i <= STRIPS; i++) {
+        float x = FLAG_X + i * FLAG_W / STRIPS;
+        glVertex2f(x, FLAG_Y + FLAG_H + waveY(x));
+    }
+    glEnd();
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i <= STRIPS; i++) {
+        float x = FLAG_X + i * FLAG_W / STRIPS;
+        glVertex2f(x, FLAG_Y + waveY(x));
+    }
+    glEnd();
+}
