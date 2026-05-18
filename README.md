@@ -39,3 +39,16 @@ Realistic Flag Waving  Fine-tuning wave amplitude and frequency was needed to a
 Color Accuracy  Selecting accurate RGB values for the Chrome logo's segments required research and refinement.
 
 Isolated Transformation Contexts The matrix stack calls had to be scoped correctly to prevent the flag's translation from leaking into the Chrome logo's transformation.
+
+
+
+
+
+
+No.	    Name	     Student ID
+1	Arsema Yirga	GUR/02128/16
+2	Bitanya Setegn	GUR/01308/16
+3	Efrata Dejene	GUR/03243/16
+4	Genet Zewdu  	GUR/01479/16
+5	Kalkidan Birara	GUR/02768/16
+6	Biruk Mitiku	GUR/01116/16

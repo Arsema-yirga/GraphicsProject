@@ -73,6 +73,7 @@ void drawStrip(float lx, float rx) {
         glVertex2f(rx, drawR);
         glVertex2f(rx, topR);
         glVertex2f(lx, topL);
+        glEnd();
     }
 }
 void drawFlagCircle(float cx, float cy, float r) {
