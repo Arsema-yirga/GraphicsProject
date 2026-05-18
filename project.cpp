@@ -75,3 +75,38 @@ void drawStrip(float lx, float rx) {
         glVertex2f(lx, topL);
     }
 }
+void drawFlagCircle(float cx, float cy, float r) {
+    glColor3f(0, 0, 0);
+    glLineWidth(7);
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < 360; i++) {
+        float a = i * PI / 180.0f;
+        float x = cx + r * cos(a);
+        float y = cy + r * sin(a);
+        glVertex2f(x, y + waveY(x));
+    }
+    glEnd();
+}
+
+void drawSmallTriangles(int cx, int cy, int b) {
+    glColor3f(0, 0, 0);
+    glBegin(GL_TRIANGLES);
+
+    glVertex2f(cx, cy + b + 15 + waveY(cx));
+    glVertex2f(cx - 8, cy + b + 5 + waveY(cx - 8));
+    glVertex2f(cx + 8, cy + b + 5 + waveY(cx + 8));
+
+    glVertex2f(cx, cy - b - 15 + waveY(cx));
+    glVertex2f(cx - 8, cy - b - 5 + waveY(cx - 8));
+    glVertex2f(cx + 8, cy - b - 5 + waveY(cx + 8));
+
+    glVertex2f(cx + b + 15, cy + waveY(cx + b + 15));
+    glVertex2f(cx + b + 5, cy - 8 + waveY(cx + b + 5));
+    glVertex2f(cx + b + 5, cy + 8 + waveY(cx + b + 5));
+
+    glVertex2f(cx - b - 15, cy + waveY(cx - b - 15));
+    glVertex2f(cx - b - 5, cy - 8 + waveY(cx - b - 5));
+    glVertex2f(cx - b - 5, cy + 8 + waveY(cx - b - 5));
+
+    glEnd();
+}
