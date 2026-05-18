@@ -110,3 +110,18 @@ void drawSmallTriangles(int cx, int cy, int b) {
 
     glEnd();
 }
+
+void drawStar() {
+    glColor3f(1, 0, 0);
+    glBegin(GL_TRIANGLES);
+
+    glVertex2f(180, 315 + waveY(180));
+    glVertex2f(220, 245 + waveY(220));
+    glVertex2f(140, 245 + waveY(140));
+
+    glVertex2f(180, 225 + waveY(180));
+    glVertex2f(220, 295 + waveY(220));
+    glVertex2f(140, 295 + waveY(140));
+
+    glEnd();
+}
