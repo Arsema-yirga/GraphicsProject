@@ -189,3 +189,68 @@ void drawChromeLogo() {
     drawChromeCircle(0.0f, 0.0f, 0.19f, 1.0f, 1.0f, 1.0f);
     drawChromeCircle(0.0f, 0.0f, 0.22f, 0.20f, 0.43f, 0.86f);
 }
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    drawFlagPole();
+
+    glPushMatrix();
+    glTranslatef(0, flagOffsetY, 0);
+
+    int cx = 180;
+    int cy = 270;
+    int r = 68;
+    int b = 66;
+
+    float dx = FLAG_W / STRIPS;
+    for (int i = 0; i < STRIPS; i++) {
+        float lx = FLAG_X + i * dx;
+        float rx = lx + dx;
+        drawStrip(lx, rx);
+    }
+
+    drawFlagCircle(cx, cy, r);
+    drawSmallTriangles(cx, cy, b);
+    drawStar();
+    drawBorder();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(1000.0f, 350.0f, 0.0f);
+    glScalef(350.0f, 350.0f, 1.0f);
+    glTranslatef(0.0f, floatOffset, 0.0f);
+    glRotatef(rotationAngle, 0.0f, 0.0f, 1.0f);
+    glScalef(scaleValue, scaleValue, 1.0f);
+    drawChromeLogo();
+    glPopMatrix();
+    glutSwapBuffers();
+}
+
+void masterTimer(int value) {
+    wavePhase -= 0.08f;
+    if (flagOffsetY < 150)
+        flagOffsetY += 0.5f;
+    rotationAngle += 1.0f;
+    if (rotationAngle > 360) rotationAngle -= 360;
+    scaleValue += scaleDir * 0.005f;
+    if (scaleValue > 1.15f) scaleDir = -1;
+    if (scaleValue < 0.90f) scaleDir = 1;
+    floatOffset = 0.15f * sin(rotationAngle * PI / 180.0f);
+    glutPostRedisplay();
+    glutTimerFunc(16, masterTimer, 0);
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(1400, 700);
+    glutCreateWindow("Waving Flag & Chrome Logo");
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, 1400, 0, 700);
+    glMatrixMode(GL_MODELVIEW);
+    glutDisplayFunc(display);
+    glutTimerFunc(16, masterTimer, 0);
+    glutMainLoop();
+    return 0;
+}
