@@ -44,11 +44,13 @@ Isolated Transformation Contexts The matrix stack calls had to be scoped correct
 
 
 
+## Group Members
 
-No.	    Name	     Student ID
-1	Arsema Yirga	GUR/02128/16
-2	Bitanya Setegn	GUR/01308/16
-3	Efrata Dejene	GUR/03243/16
-4	Genet Zewdu  	GUR/01479/16
-5	Kalkidan Birara	GUR/02768/16
-6	Biruk Mitiku	GUR/01116/16
+| No. | Name            | Student ID   |
+|-----|-----------------|--------------|
+| 1   | Arsema Yirga    | GUR/02128/16 |
+| 2   | Bitanya Setegn  | GUR/01308/16 |
+| 3   | Efrata Dejene   | GUR/03243/16 |
+| 4   | Genet Zewdu     | GUR/01479/16 |
+| 5   | Kalkidan Birara | GUR/02768/16 |
+| 6   | Biruk Mitiku    | GUR/01116/16 |
